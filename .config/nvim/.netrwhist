@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/home/cortiz/.config/polybar'
+let g:netrw_dirhist_4='/mnt/cortiz/dev/cortiz/st2/src'
+let g:netrw_dirhist_3='/mnt/cortiz/dev/cortiz/st2'
+let g:netrw_dirhist_2='/mnt/cortiz/dev/cortiz'
+let g:netrw_dirhist_1='/home/cortiz/.config/sxhkd'

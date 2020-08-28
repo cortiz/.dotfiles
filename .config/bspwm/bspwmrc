@@ -1,0 +1,51 @@
+#! /bin/sh
+## Variables 
+export GDK_SCALE=2
+
+killall -9 polybar
+# source the colors.
+. "${HOME}/.cache/wal/colors.sh"
+xrdb /home/cortiz/.Xresources
+~/.config/screenlayout/home.sh
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+
+bspc monitor 0x0040001E -n left
+bspc monitor 0x00400016 -n center
+bspc monitor 0x0040000E -n right
+
+bspc monitor %DP-4 -d I
+bspc monitor %DP-3.2 -d II III IV V
+bspc monitor %DP-3.1 -d VI VII VIII IX X
+
+
+bspc config focus_follows_pointer true
+bspc config border_width         1
+bspc config window_gap           5
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+### APP 
+bspc rule -a Slack desktop=^4
+bspc rule -a firefoxdeveloperedition desktop=^2
+bspc rule -a zoom desktop=^9
+bspc rule -a jetbrains-idea desktop=^6
+bspc rule -a code-oss desktop=^3
+bspc rule -a Spotify desktop=^1
+bspc rule -a Evolution desktop=^9
+
+#bspc config top_padding 15
+## AutoStart 
+slack & 
+picom & 
+xscreensaver -no-splash &
+feh --bg-center /home/cortiz/.config/wallpaper/wallpaper.jpg
+dunst &
+/home/cortiz/.config/polybar/launch.sh
+nm-applet &
+udiskie &
+firefox-developer-edition &
+wmname LG3D
+gnome-keyring-daemon --start --components=pkcs11,secrets,ssh &
+evolution &
+lxpolkit &

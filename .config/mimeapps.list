@@ -1,0 +1,6 @@
+[Default Applications]
+x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
+inode/directory=pcmanfm.desktop;
+
+[Added Associations]
+application/x-cisco-vpn-settings=code-oss.desktop;

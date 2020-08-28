@@ -1,0 +1,11 @@
+#!/bin/bash
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+AWS_PROFILES=$(aws-vault list --credentials)
+SEL_PROFILE=$(echo "$AWS_PROFILES" | rofi -dmenu -d -p "AWS profile")
+
+source $DIR/config
+/usr/bin/notify-send "Starting AWS Web console for $SEL_PROFILE"
+$BROWSER -new-tab "https://us-east-1.console.aws.amazon.com/console/logout!doLogout"
+sleep 10s
+aws-vault login "$SEL_PROFILE" -d 4h
+# vim: syntax=sh

@@ -1,0 +1,150 @@
+[colors]
+background = ${xrdb:color0:#222}
+foreground = ${xrdb:color7:#222}
+foreground-alt = ${xrdb:color7:#222}
+primary = ${xrdb:color1:#222}
+secondary = ${xrdb:color2:#222}
+alert = ${xrdb:color3:#222}
+
+[bar/cortiz]
+modules-right = pulseaudio wireless-network temperature cpu memory 
+modules-left  = bspwm
+radius = 1.0
+font-0 = IBM Plex Mono:style=Regular:pixelsize=10;+3
+font-1 = TerminessTTF Nerd Font Mono:pixelsize=25;+5
+dpi-y = 154
+dpi-x = 154
+separator=" "
+height=40
+wm-restack = bspwm
+padding-right = 2 
+
+[bar/cortiz-m2]
+modules-right = pulseaudio wireless-network temperature cpu memory 
+modules-left  = bspwm
+monitor=DP-3.2
+radius = 1.0
+font-0 = IBM Plex Mono:style=Regular:pixelsize=12
+font-1 = TerminessTTF Nerd Font Mono:pixelsize=20
+dpi-y = 154
+dpi-x = 154
+separator=" "
+height=40
+wm-restack = bspwm
+padding-right = 2
+
+[bar/cortiz-botton-m2]
+modules-right = date
+modules-center = xwindow
+modules-left = filesystem arch
+monitor = DP-3.1
+dpi-x = 154
+dpi-y = 154 
+bottom = true
+font-0 = IBM Plex Mono:style=Regular:pixelsize=10:+3
+font-1 = TerminessTTF Nerd Font Mono:pixelsize=20+5
+padding-rigth = 2
+wm-restack = bspwm
+
+[bar/cortiz-botton]
+modules-right = date
+modules-center = xwindow
+modules-left = filesystem arch 
+tray-position = right
+tray-padding = 16
+tray-maxsize = 32
+dpi-x = 154
+dpi-y = 154 
+bottom = true
+font-0 = IBM Plex Mono:style=Regular:pixelsize=12
+font-1 = TerminessTTF Nerd Font Mono:pixelsize=20
+
+wm-restack = bspwm
+[module/bspwm]
+type = internal/bspwm
+ws-icon-0 = "I;  "
+ws-icon-1 = "II;  "
+ws-icon-2 = "III;  "
+ws-icon-3 = "IV;  "
+ws-icon-4 = "V;  "
+ws-icon-5 = "VI;  "
+ws-icon-6 = "VII;  "
+ws-icon-7 = "VIII;  "
+ws-icon-8 = "IX;  "
+ws-icon-9 = "X;  "
+
+label-empty = %icon% 
+label-urgent = %icon% 
+label-occupied = %icon% 
+label-focused = %icon% 
+label-focused-foreground = #fc4e03
+label-focused-background = #3f3f3f
+label-empty-foreground = #666463
+enable-click = true
+
+[module/date]
+type = internal/date
+date = %Y-%m-%d%
+time = %H:%M
+format = <label>
+label = %date% %time%
+⌚
+
+[module/xwindow]
+type = internal/xwindow
+label = %title%
+label-maxlen = 50
+
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-underline = #f90000i
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+format-underline = #4bffdc
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+mount-0 = /
+mount-1 = /home
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+click-left = /usr/bin/pcmanfm >/dev/null 2>&1
+
+[module/pulseaudio]
+type = internal/pulseaudio
+sink = alsa_output.pci-0000_00_1f.3.analog-stereo
+use-ui-max = true
+interval = 5
+label-muted =  muted
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+format-volume = <ramp-volume> <label-volume>
+click-right = /usr/bin/pavucontrol >/dev/null 2>&1
+
+[module/temperature]
+type = internal/temperature
+format = <label>
+label =  %temperature-c%
+
+[module/wireless-network]
+type = internal/network
+interface = wlp4s0
+label-connected =  %local_ip%
+
+[module/arch]
+type = custom/script
+exec = /home/cortiz/.config/polybar/ext/arch-updates.sh
+interval = 600
+format-prefix = "  "
+click-left = /usr/bin/pcmanfm >/dev/null 2>&1
+
+;# vim: syntax=dosini

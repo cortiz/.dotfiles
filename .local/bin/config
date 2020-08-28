@@ -1,0 +1,3 @@
+#!/bin/bash
+TERM=/usr/local/bin/st
+BROWSER=$(which firefox-developer-edition)

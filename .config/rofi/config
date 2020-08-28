@@ -1,0 +1,3 @@
+rofi.terminal: /usr/local/bin/st
+#rofi.theme: /home/cortiz/.config/rofi/material.rasi
+rofi.theme: /home/cortiz/.cache/wal/colors-rofi-dark

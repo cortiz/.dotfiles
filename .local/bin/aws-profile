@@ -1,0 +1,9 @@
+#!/bin/bash
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+AWS_PROFILES=$(cat ~/.aws/credentials | grep -o '\[[^]]*\]' | sed 's/\[//g' |  sed 's/]//g')
+SEL_PROFILE=$(echo "$AWS_PROFILES" | rofi -dmenu -d -p "AWS profile")
+
+source $DIR/config
+export AWS_PROFILE="$SEL_PROFILE"
+$TERM&
+# vim: syntax=sh
